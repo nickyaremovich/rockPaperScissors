@@ -2,11 +2,13 @@ const computerChoiceDisplay = document.getElementById("computer-choice");
 const humanChoiceDisplay = document.getElementById("human-choice");
 const resultDisplay = document.getElementById("result");
 const choices = document.querySelectorAll("button");
+let result
 
 choices.forEach(choice => choice.addEventListener('click', (ev) => {
     humanChoice = ev.target.id
     humanChoiceDisplay.innerHTML = humanChoice
     genComputerChoice()
+    getResult()
 }))
 
 function genComputerChoice() {
@@ -24,3 +26,27 @@ function genComputerChoice() {
     computerChoiceDisplay.innerHTML = computerChoice
 }
 
+function getResult() {
+    if (computerChoice === humanChoice) {
+        result = "Draw!"
+    }
+    if (computerChoice === 'rock' && humanChoice === 'paper') {
+        result = "You win!"
+    }
+    if (computerChoice === 'rock' && humanChoice === 'scissors') {
+        result = "You lose :("
+    }
+    if (computerChoice === 'paper' && humanChoice === 'rock') {
+        result = "Better luck next time"
+    }
+    if (computerChoice === 'paper' && humanChoice === 'scissors') {
+        result = "Heck yea!"
+    }
+    if (computerChoice === 'scissors' && humanChoice === 'rock') {
+        result = "You win :)"
+    }
+    if (computerChoice === 'scissors' && humanChoice === 'paper' ) {
+        result = "You lose"
+    }
+    resultDisplay.innerHTML = result
+}
