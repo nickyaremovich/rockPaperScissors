@@ -1,9 +1,16 @@
-// computer guess function 
+// variables 
 const choices = ['rock', 'paper', 'scissors'];
+let round = 0;
+const rock = document.querySelector('.rock');
+const paper = document.querySelector('.paper');
+const scissors = document.querySelector('.scissors');
+const humanChoice = document.querySelector('p.humanChoice');
+const compChoice = document.getElementsByClassName('.compChoice');
+
+// comp choice functiom
 function compGuess() {
     return choices[Math.floor(Math.random() * choices.length)];
 }
-console.log(compGuess());
 
 // play round 
 function playRound(playerSelection, compSelection) {
@@ -23,5 +30,24 @@ function playRound(playerSelection, compSelection) {
         return "computer wins";
     }
  }
+function playGame() {
+    playRound();
+    round++;
+}
 
  // user input function
+rock.addEventListener('click', () => {
+    humanChoice.innerHTML = 'Your Choice: You chose rock';
+    playRound();
+})
+
+paper.addEventListener('click', () => {
+    humanChoice.innerHTML = "Your Choice: You chose paper";
+    playRound();
+})
+
+scissors.addEventListener('click', () => {
+    humanChoice.innerHTML = "Your Choice: You chose scissors";
+    playRound();
+})
+playGame();
